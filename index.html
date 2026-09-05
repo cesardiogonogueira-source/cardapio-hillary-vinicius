@@ -4,118 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hillary &amp; Vinícius</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-  :root{
-    --navy-950:#0a1526;
-    --navy-900:#0e1c33;
-    --gold-300:#e7cd94;
-    --gold-400:#d4af6a;
-    --gold-600:#b8862f;
-    --cream:#ece3d1;
-    --cream-faint:rgba(236,227,209,.4);
-  }
+  :root{ --navy-950:#0a1526; }
   *{box-sizing:border-box;}
   html{background:var(--navy-950);}
-  body{
-    margin:0;
-    background:var(--navy-950);
-    color:var(--cream);
-    font-family:'Cinzel','Times New Roman',serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .page{max-width:520px;margin:0 auto;padding:1.4rem 1.1rem 2.4rem;}
-  .menu-img{
-    display:block;
-    width:100%;
-    height:auto;
-    border-radius:2px;
-  }
-  .card-preview-wrap{
-    margin-top:2.4rem;
-    padding-top:1.8rem;
-    border-top:1px dashed rgba(212,175,106,.3);
-    text-align:center;
-  }
-  .card-preview-label{
-    font-size:.68rem;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    color:var(--cream-faint);
-    margin-bottom:1rem;
-  }
-  #tableCard{
-    width:min(280px,80vw);
-    margin:0 auto;
-    padding:1.8rem 1.1rem 1.4rem;
-    background:var(--navy-900);
-    border:1px solid rgba(212,175,106,.5);
-    position:relative;
-  }
-  #tableCard::before{content:"";position:absolute;inset:6px;border:1px solid rgba(212,175,106,.25);}
-  #tableCard .names{
-    font-family:'Brush Script MT','Segoe Script',cursive;
-    font-size:1.8rem;
-    color:var(--gold-300);
-    margin:0 0 .2rem;
-  }
-  #tableCard .date{font-size:.68rem;letter-spacing:.14em;margin:0 0 1rem;color:var(--cream);}
-  #qr{display:flex;justify-content:center;}
-  #qr img,#qr canvas{border-radius:4px;}
-  .scan-hint{margin-top:.9rem;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(236,227,209,.7);}
-  .print-btn{
-    margin-top:1.3rem;
-    font-family:'Cinzel',serif;
-    font-size:.72rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--navy-950);
-    background:linear-gradient(180deg,var(--gold-300),var(--gold-600));
-    border:none;
-    padding:.7rem 1.4rem;
-    cursor:pointer;
-  }
-  .print-btn:focus-visible{outline:2px solid var(--gold-300);outline-offset:3px;}
-  @media print{
-    body *{visibility:hidden;}
-    #tableCard,#tableCard *{visibility:visible;}
-    #tableCard{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);}
-    .print-btn,.page > .menu-img,.card-preview-label{display:none;}
-  }
+  body{margin:0;background:var(--navy-950);}
+  .page{max-width:520px;margin:0 auto;padding:1.4rem 1.1rem 2rem;}
+  .menu-img{display:block;width:100%;height:auto;border-radius:2px;}
 </style>
 </head>
 <body>
 <div class="page">
   <img class="menu-img" src="menu.jpg" alt="Cardápio da festa e menu de bebidas do casamento de Hillary e Vinícius, 05/09, Mirante House Eventos">
-
-  <div class="card-preview-wrap">
-    <p class="card-preview-label">Cartão de mesa (QR Code)</p>
-    <div id="tableCard">
-      <p class="names">Hillary &amp; Vinícius</p>
-      <p class="date">05 · 09</p>
-      <div id="qr"></div>
-      <p class="scan-hint">Aponte a câmera para ver o cardápio</p>
-    </div>
-    <button class="print-btn" onclick="window.print()">Imprimir cartão para as mesas</button>
-  </div>
 </div>
-
-<script>
-  try{
-    new QRCode(document.getElementById('qr'), {
-      text: window.location.href,
-      width: 150,
-      height: 150,
-      colorDark: '#0a1526',
-      colorLight: '#ece3d1',
-      correctLevel: QRCode.CorrectLevel.M
-    });
-  }catch(e){
-    document.getElementById('qr').innerHTML = '<p style="color:#ece3d1;font-size:.75rem">QR indisponível offline</p>';
-  }
-</script>
 </body>
 </html>
