@@ -1,370 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hillary &amp; Vinícius</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
   :root{
     --navy-950:#0a1526;
     --navy-900:#0e1c33;
-    --navy-800:#152741;
-    --navy-700:#1d3350;
     --gold-300:#e7cd94;
     --gold-400:#d4af6a;
     --gold-600:#b8862f;
     --cream:#ece3d1;
-    --cream-dim:rgba(236,227,209,.62);
-    --cream-faint:rgba(236,227,209,.38);
-    --serif-display:'Cinzel', 'Times New Roman', serif;
-    --serif-body:'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
-    --script:'Pinyon Script', 'Brush Script MT', cursive;
+    --cream-faint:rgba(236,227,209,.4);
   }
-
   *{box-sizing:border-box;}
   html{background:var(--navy-950);}
   body{
     margin:0;
-    background:
-      radial-gradient(1100px 500px at 50% -8%, var(--navy-800), transparent 60%),
-      var(--navy-950);
+    background:var(--navy-950);
     color:var(--cream);
-    font-family:var(--serif-body);
+    font-family:'Cinzel','Times New Roman',serif;
     -webkit-font-smoothing:antialiased;
   }
-
-  .page{
-    max-width:640px;
-    margin:0 auto;
-    padding:3rem 1.25rem 2.5rem;
+  .page{max-width:520px;margin:0 auto;padding:1.4rem 1.1rem 2.4rem;}
+  .menu-img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:2px;
   }
-
-  h1,h2,h3{text-wrap:balance; margin:0;}
-
-  /* ---------- Emblem ---------- */
-  .emblem-wrap{
-    display:flex;
-    justify-content:center;
-    margin-bottom:1.1rem;
-    animation:rise .7s ease-out both;
-  }
-  .emblem{width:104px;height:104px;overflow:visible;}
-  .emblem .ring{fill:none;stroke:var(--gold-400);stroke-width:1.4;}
-  .emblem .mark{fill:none;stroke:var(--gold-300);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;}
-  .emblem .leaf{fill:var(--gold-600);opacity:.85;}
-
-  /* ---------- Header ---------- */
-  header{text-align:center;}
-  .names{
-    font-family:var(--script);
-    font-size:clamp(2.6rem,11vw,3.6rem);
-    line-height:1;
-    color:var(--gold-300);
-    margin:0 0 .55rem;
-    animation:rise .8s .05s ease-out both;
-  }
-  .divider{
-    display:flex;align-items:center;gap:.6rem;
-    color:var(--gold-400);
-    margin:.7rem auto 1rem;
-    width:min(220px,60%);
-  }
-  .divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-600) 40%,var(--gold-600) 60%,transparent);}
-  .divider svg{width:11px;height:11px;flex:none;}
-
-  .date{
-    font-family:var(--serif-display);
-    font-size:.95rem;
-    letter-spacing:.18em;
-    color:var(--cream);
-  }
-  .kicker{
-    font-family:var(--serif-display);
-    font-weight:600;
-    font-size:clamp(1rem,4vw,1.2rem);
-    letter-spacing:.08em;
-    color:var(--gold-300);
-    margin-top:.85rem;
-  }
-  .vendor{
-    font-family:var(--serif-body);
-    font-style:italic;
-    font-size:.78rem;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--cream-faint);
-    margin-top:.6rem;
-  }
-
-  /* ---------- Framed panels ---------- */
-  .panel{
-    position:relative;
-    margin-top:2.4rem;
-    padding:2.1rem 1.4rem 1.8rem;
-    border:1px solid rgba(212,175,106,.55);
-    animation:rise .8s .1s ease-out both;
-  }
-  .panel::before{
-    content:"";
-    position:absolute; inset:7px;
-    border:1px solid rgba(212,175,106,.28);
-    pointer-events:none;
-  }
-  .panel-title{
-    display:flex; justify-content:center;
-  }
-  .panel-title span{
-    font-family:var(--serif-display);
-    font-weight:600;
-    font-size:clamp(1.15rem,4.6vw,1.45rem);
-    letter-spacing:.06em;
-    color:var(--navy-950);
-    background:linear-gradient(180deg,var(--gold-300),var(--gold-600));
-    padding:.5rem 1.6rem;
-    position:relative;
-    top:-2.7rem;
-    box-shadow:0 6px 18px rgba(0,0,0,.35);
-  }
-  .panel-intro{
-    text-align:center;
-    font-style:italic;
-    color:var(--cream-dim);
-    font-size:1.05rem;
-    margin:-1.6rem 0 1.6rem;
-  }
-
-  .groups{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:1.6rem 1.2rem;
-  }
-  .group h3{
-    font-family:var(--serif-display);
-    font-size:.82rem;
-    letter-spacing:.12em;
-    color:var(--gold-400);
-    margin-bottom:.75rem;
-    display:flex; align-items:center; gap:.45rem;
-  }
-  .group h3 svg{width:14px;height:14px;flex:none;color:var(--gold-400);}
-  .group ul{list-style:none;margin:0;padding:0;}
-  .group li{
-    font-size:1.08rem;
-    color:var(--cream);
-    padding:.32rem 0;
-    border-bottom:1px dotted rgba(236,227,209,.16);
-  }
-  .group li:last-child{border-bottom:none;}
-
-  /* ---------- Drinks ---------- */
-  .drinks-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:1.8rem;
-  }
-  @media (min-width:520px){
-    .drinks-grid{grid-template-columns:1.05fr 1fr;}
-  }
-  .drink-col{display:flex;flex-direction:column;gap:1.6rem;}
-  .price-row{
-    display:flex; align-items:baseline; gap:.5rem;
-    font-size:1.05rem;
-    padding:.3rem 0;
-  }
-  .price-row .name{white-space:nowrap;color:var(--cream);}
-  .price-row .dots{flex:1;border-bottom:1px dotted rgba(212,175,106,.55);transform:translateY(-.3em);}
-  .price-row .price{white-space:nowrap;color:var(--gold-300);font-variant-numeric:tabular-nums;font-weight:600;}
-
-  /* ---------- Footer ---------- */
-  footer{
-    margin-top:2.6rem;
-    text-align:center;
-  }
-  .rope{width:100%;max-width:420px;height:20px;margin:0 auto 1rem;color:var(--gold-600);opacity:.8;}
-  .moderacao{
-    font-family:var(--serif-display);
-    font-size:.72rem;
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    color:var(--cream-faint);
-  }
-  .credit{
-    margin-top:.4rem;
-    font-style:italic;
-    font-size:.78rem;
-    color:var(--cream-faint);
-  }
-
-  @keyframes rise{
-    from{opacity:0;transform:translateY(10px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .emblem-wrap,.names,.panel{animation:none;}
-  }
-
-  /* ---------- Table card (print) ---------- */
   .card-preview-wrap{
-    margin-top:3.2rem;
-    padding-top:2rem;
+    margin-top:2.4rem;
+    padding-top:1.8rem;
     border-top:1px dashed rgba(212,175,106,.3);
     text-align:center;
   }
   .card-preview-label{
-    font-family:var(--serif-display);
-    font-size:.72rem;
-    letter-spacing:.22em;
+    font-size:.68rem;
+    letter-spacing:.2em;
     text-transform:uppercase;
     color:var(--cream-faint);
-    margin-bottom:1.1rem;
+    margin-bottom:1rem;
   }
   #tableCard{
-    width:min(300px,80vw);
+    width:min(280px,80vw);
     margin:0 auto;
-    padding:2rem 1.2rem 1.6rem;
+    padding:1.8rem 1.1rem 1.4rem;
     background:var(--navy-900);
     border:1px solid rgba(212,175,106,.5);
     position:relative;
   }
   #tableCard::before{content:"";position:absolute;inset:6px;border:1px solid rgba(212,175,106,.25);}
-  #tableCard .names{font-size:2rem;margin-bottom:.2rem;}
-  #tableCard .date{font-size:.7rem;letter-spacing:.14em;margin-bottom:1.1rem;}
-  #qr{display:flex;justify-content:center;margin:0 auto;}
-  #qr img,#qr canvas{border-radius:4px;}
-  .scan-hint{
-    margin-top:1rem;
-    font-size:.72rem;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--cream-dim);
+  #tableCard .names{
+    font-family:'Brush Script MT','Segoe Script',cursive;
+    font-size:1.8rem;
+    color:var(--gold-300);
+    margin:0 0 .2rem;
   }
+  #tableCard .date{font-size:.68rem;letter-spacing:.14em;margin:0 0 1rem;color:var(--cream);}
+  #qr{display:flex;justify-content:center;}
+  #qr img,#qr canvas{border-radius:4px;}
+  .scan-hint{margin-top:.9rem;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(236,227,209,.7);}
   .print-btn{
-    margin-top:1.4rem;
-    font-family:var(--serif-display);
-    font-size:.78rem;
-    letter-spacing:.1em;
+    margin-top:1.3rem;
+    font-family:'Cinzel',serif;
+    font-size:.72rem;
+    letter-spacing:.08em;
     text-transform:uppercase;
     color:var(--navy-950);
     background:linear-gradient(180deg,var(--gold-300),var(--gold-600));
     border:none;
-    padding:.75rem 1.6rem;
+    padding:.7rem 1.4rem;
     cursor:pointer;
   }
-  .print-btn:hover{filter:brightness(1.08);}
   .print-btn:focus-visible{outline:2px solid var(--gold-300);outline-offset:3px;}
-
   @media print{
     body *{visibility:hidden;}
     #tableCard,#tableCard *{visibility:visible;}
-    #tableCard{
-      position:fixed; top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      box-shadow:none;
-    }
-    .print-btn{display:none;}
+    #tableCard{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);}
+    .print-btn,.page > .menu-img,.card-preview-label{display:none;}
   }
 </style>
-
+</head>
+<body>
 <div class="page">
-
-  <div class="emblem-wrap">
-    <svg class="emblem" viewBox="0 0 120 120">
-      <circle class="ring" cx="60" cy="60" r="42"/>
-      <path class="mark" d="M44 74 L44 54 L60 40 L76 54 L76 74"/>
-      <line class="mark" x1="60" y1="40" x2="60" y2="30"/>
-      <circle cx="60" cy="27" r="2.4" fill="var(--gold-300)"/>
-      <line class="mark" x1="40" y1="74" x2="80" y2="74"/>
-      <g class="leaf">
-        <ellipse cx="14" cy="60" rx="5" ry="2.2" transform="rotate(20 14 60)"/>
-        <ellipse cx="19" cy="52" rx="5" ry="2.2" transform="rotate(0 19 52)"/>
-        <ellipse cx="18" cy="70" rx="5" ry="2.2" transform="rotate(45 18 70)"/>
-      </g>
-      <g class="leaf">
-        <ellipse cx="106" cy="60" rx="5" ry="2.2" transform="rotate(-20 106 60)"/>
-        <ellipse cx="101" cy="52" rx="5" ry="2.2" transform="rotate(0 101 52)"/>
-        <ellipse cx="102" cy="70" rx="5" ry="2.2" transform="rotate(-45 102 70)"/>
-      </g>
-    </svg>
-  </div>
-
-  <header>
-    <h1 class="names">Hillary &amp; Vinícius</h1>
-    <div class="divider"><svg viewBox="0 0 10 10"><path d="M5 0 L6.2 3.8 L10 5 L6.2 6.2 L5 10 L3.8 6.2 L0 5 L3.8 3.8 Z" fill="currentColor"/></svg></div>
-    <p class="date">05 · 09</p>
-    <h2 class="kicker">Cardápio da Festa &amp; Menu de Bebidas</h2>
-    <p class="vendor">Mirante House Eventos</p>
-  </header>
-
-  <section class="panel">
-    <div class="panel-title"><span>Cardápio da Festa</span></div>
-    <p class="panel-intro">Uma seleção especial preparada para celebrar esse momento com vocês.</p>
-    <div class="groups">
-      <div class="group">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3v9a3 3 0 0 0 6 0V3M9 3v6M4 21l6-7M18 3c-2 2-2 5 0 8s2 6 0 8"/></svg>Pratos principais</h3>
-        <ul>
-          <li>Costela</li>
-          <li>Capa de contrafilé</li>
-          <li>Cupim</li>
-          <li>Coxa e sobrecoxa</li>
-          <li>Linguiça</li>
-        </ul>
-      </div>
-      <div class="group">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="12" rx="9" ry="5"/></svg>Acompanhamentos</h3>
-        <ul>
-          <li>Arroz branco</li>
-          <li>Feijão</li>
-          <li>Farofa de bacon com banana</li>
-          <li>Mandioca doce</li>
-          <li>Mandioca salgada</li>
-        </ul>
-      </div>
-      <div class="group">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M6 12c0 4 2.5 7 6 7s6-3 6-7M9 12V7a3 3 0 0 1 6 0v5"/></svg>Saladas</h3>
-        <ul>
-          <li>Vinagrete</li>
-          <li>Maionese</li>
-          <li>Salada tropical</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="panel-title"><span>Menu de Bebidas</span></div>
-    <div class="drinks-grid" style="margin-top:.6rem">
-      <div class="drink-col">
-        <div>
-          <h3 style="font-family:var(--serif-display);font-size:.82rem;letter-spacing:.1em;color:var(--gold-400);margin-bottom:.7rem;">Baldes, 6 unidades</h3>
-          <div class="price-row"><span class="name">Heineken</span><span class="dots"></span><span class="price">R$ 78,00</span></div>
-          <div class="price-row"><span class="name">Amstel</span><span class="dots"></span><span class="price">R$ 35,00</span></div>
-          <div class="price-row"><span class="name">Original</span><span class="dots"></span><span class="price">R$ 40,00</span></div>
-          <div class="price-row"><span class="name">Skol</span><span class="dots"></span><span class="price">R$ 35,00</span></div>
-        </div>
-      </div>
-      <div class="drink-col">
-        <div>
-          <h3 style="font-family:var(--serif-display);font-size:.82rem;letter-spacing:.1em;color:var(--gold-400);margin-bottom:.7rem;">Energéticos e complementos</h3>
-          <div class="price-row"><span class="name">Red Bull</span><span class="dots"></span><span class="price">R$ 15,00</span></div>
-          <div class="price-row"><span class="name">Monster</span><span class="dots"></span><span class="price">R$ 20,00</span></div>
-          <div class="price-row"><span class="name">Água tônica</span><span class="dots"></span><span class="price">R$ 6,00</span></div>
-        </div>
-        <div>
-          <h3 style="font-family:var(--serif-display);font-size:.82rem;letter-spacing:.1em;color:var(--gold-400);margin-bottom:.7rem;">Cervejas avulsas</h3>
-          <div class="price-row"><span class="name">Heineken</span><span class="dots"></span><span class="price">R$ 12,00</span></div>
-          <div class="price-row"><span class="name">Amstel</span><span class="dots"></span><span class="price">R$ 5,00</span></div>
-          <div class="price-row"><span class="name">Original</span><span class="dots"></span><span class="price">R$ 6,00</span></div>
-          <div class="price-row"><span class="name">Skol</span><span class="dots"></span><span class="price">R$ 5,00</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <svg class="rope" viewBox="0 0 420 20" preserveAspectRatio="none">
-      <path d="M0 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 100 10 T 120 10 T 140 10 T 160 10 T 180 10 T 200 10 T 220 10 T 240 10 T 260 10 T 280 10 T 300 10 T 320 10 T 340 10 T 360 10 T 380 10 T 400 10 T 420 10" fill="none" stroke="currentColor" stroke-width="1.4"/>
-    </svg>
-    <p class="moderacao">Beba com moderação</p>
-  </footer>
+  <img class="menu-img" src="menu.jpg" alt="Cardápio da festa e menu de bebidas do casamento de Hillary e Vinícius, 05/09, Mirante House Eventos">
 
   <div class="card-preview-wrap">
     <p class="card-preview-label">Cartão de mesa (QR Code)</p>
@@ -376,20 +101,21 @@
     </div>
     <button class="print-btn" onclick="window.print()">Imprimir cartão para as mesas</button>
   </div>
-
 </div>
 
 <script>
   try{
     new QRCode(document.getElementById('qr'), {
       text: window.location.href,
-      width: 168,
-      height: 168,
+      width: 150,
+      height: 150,
       colorDark: '#0a1526',
       colorLight: '#ece3d1',
       correctLevel: QRCode.CorrectLevel.M
     });
   }catch(e){
-    document.getElementById('qr').innerHTML = '<p style="color:var(--cream-dim);font-size:.8rem">QR indisponível offline</p>';
+    document.getElementById('qr').innerHTML = '<p style="color:#ece3d1;font-size:.75rem">QR indisponível offline</p>';
   }
 </script>
+</body>
+</html>
